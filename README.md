@@ -1,12 +1,12 @@
-# xfce4-gpugraph-plugin
+# xfce4-gpugraph-plugin-nvidia
 
-GPU Graph plugin for the Xfce4 panel. This plugin displays a real-time graph of AMD GPU usage over time, providing visual history of GPU utilization.
+GPU Graph plugin for the Xfce4 panel. This plugin displays a real-time graph of Nvidia GPU usage over time, providing visual history of GPU utilization.
 
 ## Features
 
 - **Real-time GPU Monitoring**: Live graph showing GPU usage history
 - **Multi-GPU Support**: Monitor GPU0 and GPU1 simultaneously
-- **ROCm Integration**: Uses `rocm-smi --showuse` for accurate AMD GPU readings
+- **nvidia-smi Integration**: Uses `nvidia-smi --query-gpu=utilization.gpu` for accurate Nvidia GPU readings
 - **Configurable Colors**: Customize colors for each GPU
 - **Tooltip Information**: Hover to see current usage percentages
 - **Compact Display**: Space-efficient graph in the panel
@@ -36,8 +36,8 @@ From source:
 
 ## Requirements
 
-- **AMD GPU** with ROCm drivers installed
-- **rocm-smi** command available (typically at `/opt/rocm-*/bin/rocm-smi`)
+- **Nvidia GPU** with Nvidia drivers installed
+- **nvidia-smi** command available (typically in `/usr/bin/nvidia-smi`)
 - **Xfce4 panel**
 - **GTK3**
 - **libxfce4panel**
@@ -58,4 +58,4 @@ GPL-2.0-or-later
 
 ## Development
 
-This is a standalone GPU monitoring plugin. For integrated system monitoring (CPU + Memory + Network + GPU), see [xfce4-systemload-plugin-gpu](https://github.com/dmarsh400/xfce4-systemload-plugin-gpu).
+This is a standalone GPU monitoring plugin. For integrated system monitoring (CPU + Memory + Network + GPU), see [xfce4-systemload-plugin-nvidia](https://github.com/dmarsh400/xfce4-systemload-plugin-nvidia).

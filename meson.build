@@ -1,4 +1,4 @@
-project('xfce4-gpugraph-plugin', 'c',
+project('xfce4-gpugraph-plugin-nvidia', 'c',
   version: '1.0.0',
   license: 'GPL-2.0-or-later',
   meson_version: '>= 0.50.0',

@@ -42,7 +42,7 @@ typedef struct {
 } GPUGraph;
 
 static void get_gpu_usage(gfloat *usages, gint max_gpus) {
-    FILE *fp = popen("/opt/rocm-6.0.0/bin/rocm-smi --showuse 2>/dev/null", "r");
+    FILE *fp = popen("nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null", "r");
     if (!fp) {
         for (gint i = 0; i < max_gpus; i++) usages[i] = -1.0;
         return;
@@ -50,12 +50,8 @@ static void get_gpu_usage(gfloat *usages, gint max_gpus) {
     char buffer[256];
     gint gpu_count = 0;
     while (fgets(buffer, sizeof(buffer), fp) != NULL && gpu_count < max_gpus) {
-        char *pos = strstr(buffer, "GPU use (%): ");
-        if (pos) {
-            pos += strlen("GPU use (%): ");
-            usages[gpu_count] = atoi(pos) / 100.0;
-            gpu_count++;
-        }
+        usages[gpu_count] = atoi(buffer) / 100.0;
+        gpu_count++;
     }
     for (gint i = gpu_count; i < max_gpus; i++) usages[i] = -1.0;
     pclose(fp);
