@@ -15,10 +15,11 @@ GPU Graph plugin for the Xfce4 panel. This plugin displays a real-time graph of 
 
 From source:
 
+    % sudo apt install meson ninja-build build-essential libxfce4panel-2.0-dev
     % cd xfce4-gpugraph-plugin
     % meson setup build
     % meson compile -C build
-    % meson install -C build
+    % sudo meson install -C build
 
 ## Usage
 
